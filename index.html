@@ -24,10 +24,17 @@
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        /* TAŞMAYI ENGELLEYEN KRİTİK AYAR */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html, body {
+            overflow-x: hidden; /* Yatay kaydırmayı tamamen kapatır */
+            width: 100%;
+            position: relative;
         }
 
         html {
@@ -76,6 +83,7 @@
             padding: 120px 5%;
             max-width: 1300px;
             margin: 0 auto;
+            width: 100%; /* Genişliği garantile */
         }
 
         .section-header {
@@ -251,6 +259,8 @@
             color: white;
             border-radius: 40px 40px 0 0;
             text-align: center;
+            width: 100%; /* Taşmayı önlemek için genişliği sabitle */
+            max-width: 100%;
         }
 
         .contact-links {
@@ -276,11 +286,10 @@
             opacity: 1;
         }
 
-        /* RESPONSIVE DÜZENLEMELERİ */
+        /* MOBİL DÜZELTME MERKEZİ */
         @media (max-width: 992px) {
             #hakkimda {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
 
             .galeri {
@@ -292,40 +301,30 @@
                 grid-column: span 2;
                 grid-row: span 1;
             }
+
+            /* Mobilde sağ/sol boşluğu eşitlemek için */
+            section {
+                padding: 80px 6%; 
+            }
+            
+            /* İletişim alanının taşmasını engelle */
+            #iletisim {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
         }
 
-        @media (max-width: 768px) {
-            /* 1. Mobilde yazıların üzerine binme ve okunmama sorununu çözer */
-            .proje-overlay {
-                opacity: 1; /* Yazıların hep görünür olmasını sağlar */
-                background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)); /* Alt kısmı karartarak yazıyı belirginleştirir */
-                padding: 15px;
-            }
-
-            .proje-overlay h3 {
-                font-size: 16px;
-            }
-
-            /* 2. Sağ tarafta oluşan boşluk/taşma sorununu çözer */
-            body, html {
-                overflow-x: hidden;
-                width: 100%;
-                position: relative;
-            }
-
-            section {
-                padding: 80px 4%; /* Sağ ve sol boşluğu mobilde eşitler */
-            }
-
-            /* Navigasyonun mobilde ekran dışına taşmaması için */
+        @media (max-width: 480px) {
             nav {
                 width: 90%;
                 gap: 15px;
-                padding: 10px 15px;
+                padding: 10px 20px;
             }
-
             nav a {
-                font-size: 12px;
+                font-size: 11px;
+            }
+            .hakkimda-content h1 {
+                font-size: 32px;
             }
         }
     </style>
