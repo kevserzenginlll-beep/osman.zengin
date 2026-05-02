@@ -24,18 +24,21 @@
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* 1. TAŞMA VE BOŞLUK SORUNUNU ÇÖZEN TEMEL AYARLAR */
+        /* TAŞMA VE BOŞLUK SORUNUNU ÇÖZEN KRİTİK AYAR */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html,
-        body {
+        html, body {
             overflow-x: hidden;
             width: 100%;
             position: relative;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -45,6 +48,7 @@
             line-height: 1.6;
         }
 
+        /* MODERN NAV */
         nav {
             position: fixed;
             top: 20px;
@@ -67,7 +71,12 @@
             font-size: 14px;
             font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
             transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: #888;
         }
 
         section {
@@ -76,7 +85,72 @@
             margin: 0 auto;
         }
 
-        /* 2. PORTFOLYO ALANI (YENİ TASARIM) */
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* HAKKIMDA SECTION */
+        #hakkimda {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hakkimda-image-wrap {
+            position: relative;
+        }
+
+        .hakkimda-image-wrap img {
+            width: 100%;
+            border-radius: 24px;
+            transition: var(--transition);
+
+        }
+
+        .hakkimda-image-wrap:hover img {
+            transform: scale(1.02);
+        }
+
+        .hakkimda-content h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .hakkimda-content p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-item h4 {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* PORTFOLYO (BENTO STYLE) */
         .galeri {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -89,7 +163,7 @@
             border-radius: 20px;
             overflow: hidden;
             background: #eee;
-            transition: var(--transition);
+            outline: none;
         }
 
         .proje-kutu:nth-child(1) {
@@ -119,58 +193,75 @@
             transition: var(--transition);
         }
 
-        /* Yazı Bandı (Yenilendi) */
         .proje-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            /* Yarı şeffaf siyah bant */
-            backdrop-filter: blur(5px);
-            padding: 15px 20px;
-            transform: translateY(0);
-            /* Sabit durması daha profesyonel */
+            inset: 0;
+            /* Hafif bir gölge yazı okunsun diye */
+            background: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.6));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
             transition: var(--transition);
+            pointer-events: none;
         }
 
-        .proje-overlay h3 {
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
-            margin: 0;
+        /* Hover efekti (Bilgisayar) */
+        .proje-kutu:hover .proje-overlay {
+            opacity: 1;
         }
 
         .proje-kutu:hover img {
             transform: scale(1.05);
         }
 
-        /* HAKKIMDA / DİĞER ALANLAR */
-        #hakkimda {
+        /* HİZMETLER SECTION */
+        .hizmetler-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 80px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        .hakkimda-image-wrap img {
-            width: 100%;
+        .hizmet-kart {
+            background: #f9f9f9;
+            padding: 35px;
             border-radius: 24px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .hakkimda-content h1 {
-            font-size: 48px;
+        .hizmet-kart:hover {
+            background: white;
+            border-color: #eee;
+            box-shadow: var(--card-shadow);
+            transform: translateY(-5px);
+        }
+
+        .hizmet-kart .sayi {
+            font-size: 24px;
             font-weight: 800;
-            margin-bottom: 25px;
+            color: #ccc;
+            min-width: 40px;
         }
 
-        /* İLETİŞİM ALANI DÜZELTMESİ */
+        .hizmet-kart h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* İLETİŞİM SECTION */
         #iletisim {
             background: var(--primary);
             color: white;
             border-radius: 40px 40px 0 0;
             text-align: center;
-            padding: 100px 5%;
             width: 100%;
         }
 
@@ -178,22 +269,26 @@
             display: flex;
             justify-content: center;
             gap: 40px;
+            margin-top: 50px;
             flex-wrap: wrap;
-            margin-top: 40px;
         }
 
         .contact-item {
-            color: white;
             text-decoration: none;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             opacity: 0.7;
+            transition: 0.3s;
         }
 
-        /* 3. MOBİL UYUMLULUK (KESİN ÇÖZÜM) */
-        @media (max-width: 992px) {
-            section {
-                padding: 80px 5%;
-            }
+        .contact-item:hover {
+            opacity: 1;
+        }
 
+        @media (max-width: 992px) {
             #hakkimda {
                 grid-template-columns: 1fr;
             }
@@ -208,36 +303,26 @@
                 grid-row: span 1;
             }
 
-            /* Mobilde bant biraz daha ince ve yazı net */
+            /* Mobilde yazıyı daha aşağıya ve ince tutan ayar */
             .proje-overlay {
-                padding: 10px 15px;
-                background: rgba(0, 0, 0, 0.7);
+                padding: 15px;
+                opacity: 0; /* Dokunana kadar gizli kalsın */
+                background: linear-gradient(transparent 75%, rgba(0, 0, 0, 0.5));
             }
 
             .proje-overlay h3 {
-                font-size: 14px;
+                font-size: 16px;
             }
 
-            #iletisim {
+            /* Dokunulduğunda yazıyı gösterir */
+            .proje-kutu:active .proje-overlay,
+            .proje-kutu:focus .proje-overlay {
+                opacity: 1;
+            }
+
+            /* Sağ boşluk koruması */
+            section {
                 padding: 80px 5%;
-            }
-
-            /* Mobilde yan boşlukları sabitledik */
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                width: 90%;
-                gap: 10px;
-                padding: 10px;
-            }
-
-            nav a {
-                font-size: 11px;
-            }
-
-            .hakkimda-content h1 {
-                font-size: 32px;
             }
         }
     </style>
@@ -253,10 +338,36 @@
     </nav>
 
     <section id="hakkimda">
-        <div class="hakkimda-image-wrap"><img src="res/osman07.png" alt="Osman Zengin"></div>
+        <div class="hakkimda-image-wrap">
+            <img src="res/osman07.png" alt="Osman Zengin">
+        </div>
         <div class="hakkimda-content">
             <h1>Fikirleri Görsel <br>Deneyimlere Dönüştürüyorum.</h1>
-            <p>Osman Zengin; tasarım ve teknolojiyi harmanlayarak modern çözümler üretiyorum.</p>
+            <p>
+                Ben Osman Zengin; Ondokuz Mayıs Üniversitesi'nde akademik eğitimimi sürdürürken, 5 yılı aşkın süredir
+                freelance ekosisteminde markalara dijital kimlik kazandırıyorum. Tasarımı sadece bir "görselleştirme"
+                aracı değil, bir problem çözme yöntemi olarak görüyorum.
+            </p>
+            <p>
+                Trabzon'daki stüdyomda; minimalizmi fonksiyonellikle harmanlayarak modern, zamansız ve kullanıcı odaklı
+                çözümler üretiyorum. Logo tasarımından kurumsal kimliğe, web arayüzlerinden 3D modellemeye kadar geniş
+                bir yelpazede, markanızın hikayesini en doğru estetik dille anlatmak için buradayım.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>5+</h4>
+                    <p>Yıllık Deneyim</p>
+                </div>
+                <div class="stat-item">
+                    <h4>1000+</h4>
+                    <p>Tamamlanan Proje</p>
+                </div>
+                <div class="stat-item">
+                    <h4>%100</h4>
+                    <p>Tutku</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -265,25 +376,25 @@
             <h2>Seçili İşler</h2>
         </div>
         <div class="galeri">
-            <div class="proje-kutu">
+            <div class="proje-kutu" tabindex="0">
                 <img src="res/kurumsal/31.png" alt="Proje">
                 <div class="proje-overlay">
                     <h3>Kurumsal Tasarım</h3>
                 </div>
             </div>
-            <div class="proje-kutu">
+            <div class="proje-kutu" tabindex="0">
                 <img src="res/logo/3.png" alt="Proje">
                 <div class="proje-overlay">
                     <h3>Logo Tasarımı</h3>
                 </div>
             </div>
-            <div class="proje-kutu">
+            <div class="proje-kutu" tabindex="0">
                 <img src="res/logo/16.png" alt="Proje">
                 <div class="proje-overlay">
                     <h3>Logo Tasarımı</h3>
                 </div>
             </div>
-            <div class="proje-kutu">
+            <div class="proje-kutu" tabindex="0">
                 <img src="res/diger/37.png" alt="Proje">
                 <div class="proje-overlay">
                     <h3>Ambalaj Tasarımı</h3>
@@ -292,16 +403,53 @@
         </div>
     </section>
 
+    <section id="hizmetler">
+        <div class="section-header">
+            <h2>Ne Yapıyorum?</h2>
+        </div>
+        <div class="hizmetler-grid">
+            <a href="logo-tasarimi.html" target="_blank" class="hizmet-kart">
+                <span class="sayi">01</span>
+                <h3>Logo Tasarımı</h3>
+            </a>
+            <a href="kartvizit-tasarimi.html" target="_blank" class="hizmet-kart">
+                <span class="sayi">02</span>
+                <h3>Kartvizit Tasarımı</h3>
+            </a>
+            <a href="sosyal-medya.html" target="_blank" class="hizmet-kart">
+                <span class="sayi">03</span>
+                <h3>Sosyal Medya Tasarımları</h3>
+            </a>
+            <a href="kurumsal-kimlik.html" target="_blank" class="hizmet-kart">
+                <span class="sayi">04</span>
+                <h3>Kurumsal Kimlik Tasarımları</h3>
+            </a>
+            <a href="brosur-tasarimi.html" target="_blank" class="hizmet-kart">
+                <span class="sayi">05</span>
+                <h3>Broşür Tasarımları</h3>
+            </a>
+            <a href="diger-tasarimlar.html" target="_blank" class="hizmet-kart">
+                <span class="sayi">06</span>
+                <h3>Diğer Tasarımlar</h3>
+            </a>
+        </div>
+    </section>
+
     <section id="iletisim">
-        <h2>Bir Projen mi Var?</h2>
+        <h2 style="font-size: 50px; margin-bottom: 20px;">Bir Projen mi Var?</h2>
+        <p style="opacity: 0.7; font-size: 20px;">Hadi birlikte harika bir şeyler inşa edelim.</p>
+
         <div class="contact-links">
             <a href="mailto:zendesign.psd@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i>
                 E-posta</a>
             <a href="https://instagram.com/zendesign.psd" class="contact-item"><i class="fa-brands fa-instagram"></i>
                 Instagram</a>
+            <a href="https://www.behance.net/osmanzengin1?tracking_source=typeahead_search_direct&isProfilePanel=true"
+                class="contact-item"><i class="fa-brands fa-behance"></i> Behance</a>
             <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Trabzon, TR</span>
         </div>
-        <p style="margin-top: 80px; font-size: 11px; opacity: 0.3;">&copy; 2026 Osman Zengin.</p>
+
+        <p style="margin-top: 100px; font-size: 12px; opacity: 0.3;">&copy; 2026 Osman Zengin. Tüm hakları saklıdır.</p>
     </section>
 
 </body>
