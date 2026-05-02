@@ -90,35 +90,37 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 60px;
+            gap: 40px;
         }
 
-        /* DİĞER SAYFALARLA BÜTÜNLEŞEN KUTU YAPISI */
+        /* YENİDEN DÜZENLENMİŞ KISA VE GENİŞ KUTU */
         .proje-kutu {
             position: relative;
             width: 100%;
             max-width: 900px;
-            border-radius: 24px;
-            background: #f9f9f9; /* Hafif gri arka plan */
-            transition: var(--transition);
-            
-            /* İSTEDİĞİN BOŞLUKLAR BURADA: */
-            padding: 40px; /* Üst, alt, sağ ve soldan resme nefes aldırır */
+            border-radius: 20px;
+            overflow: hidden;
+            background: #f9f9f9;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            /* Sabit yüksekliği kaldırdık, padding'i sıfıra yakın yaptık */
+            padding: 5px 0; 
         }
 
         .proje-kutu img {
-            max-width: 100%; /* Kutu paddinginden sonra kalan alana sığar */
+            /* Resmin genişliğini %90 yaparak tekrar büyük durmasını sağladık */
+            width: 90%; 
             height: auto;
-            border-radius: 12px; /* Resmin kendisine de hafif bir kavis verdik */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03); /* Resim havada dursun */
+            z-index: 1;
             transition: var(--transition);
+            display: block;
         }
 
         .proje-kutu:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            background: #f0f0f0;
+            box-shadow: var(--card-shadow);
             transform: translateY(-5px);
         }
 
@@ -130,11 +132,13 @@
         @media (max-width: 768px) {
             .page-header { margin-top: 100px; }
             .page-header h1 { font-size: 32px; }
-            .grid-container { gap: 30px; }
             
             .proje-kutu {
-                border-radius: 16px;
-                padding: 20px; /* Mobilde ekran dar olduğu için boşluğu biraz azalttık */
+                padding: 5px 0;
+            }
+
+            .proje-kutu img {
+                width: 92%; /* Mobilde biraz daha geniş durabilir */
             }
         }
     </style>
@@ -153,9 +157,15 @@
 
     <section class="portfolio-icerik">
         <div class="grid-container grid-sosyal">
-            <div class="proje-kutu"><img src="res/medya/27.png" alt="Medya 01"></div>
-            <div class="proje-kutu"><img src="res/medya/28.png" alt="Medya 02"></div>
-            <div class="proje-kutu"><img src="res/medya/29.png" alt="Medya 03"></div>
+            <div class="proje-kutu">
+                <img src="res/medya/27.png" alt="Medya 01">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/medya/28.png" alt="Medya 02">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/medya/29.png" alt="Medya 03">
+            </div>
         </div>
     </section>
 
