@@ -19,7 +19,6 @@
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* TEMEL AYARLAR */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -91,32 +90,40 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 60px; /* Görseller arası mesafe */
+            gap: 60px;
         }
 
-        /* RESMİN ŞEKLİNİ ALAN KUTU YAPISI */
+        /* DİĞER SAYFALARLA BÜTÜNLEŞEN KUTU YAPISI */
         .proje-kutu {
             position: relative;
             width: 100%;
             max-width: 900px;
             border-radius: 24px;
-            overflow: hidden;
-            background: #f9f9f9;
+            background: #f9f9f9; /* Hafif gri arka plan */
             transition: var(--transition);
-            /* Aspect-ratio silindi: Kutu artık resmin yüksekliğine göre şekil alacak */
+            
+            /* İSTEDİĞİN BOŞLUKLAR BURADA: */
+            padding: 40px; /* Üst, alt, sağ ve soldan resme nefes aldırır */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .proje-kutu img {
-            display: block; /* Altındaki boşluğu siler */
-            width: 100%;
-            height: auto; /* Resmin kendi orijinal oranını korur */
-            object-fit: contain; /* Resmin kesilmesini kesinlikle engeller */
+            max-width: 100%; /* Kutu paddinginden sonra kalan alana sığar */
+            height: auto;
+            border-radius: 12px; /* Resmin kendisine de hafif bir kavis verdik */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03); /* Resim havada dursun */
             transition: var(--transition);
         }
 
         .proje-kutu:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .proje-kutu:hover img {
+            transform: scale(1.02);
         }
 
         /* MOBİL DÜZELTME */
@@ -127,7 +134,7 @@
             
             .proje-kutu {
                 border-radius: 16px;
-                /* Mobilde de genişlik %100, yükseklik resim neyse o olacak */
+                padding: 20px; /* Mobilde ekran dar olduğu için boşluğu biraz azalttık */
             }
         }
     </style>
