@@ -32,7 +32,7 @@
         }
 
         html, body {
-            overflow-x: hidden; /* Yatay kaydırmayı tamamen kapatır */
+            overflow-x: hidden;
             width: 100%;
             position: relative;
         }
@@ -83,7 +83,7 @@
             padding: 120px 5%;
             max-width: 1300px;
             margin: 0 auto;
-            width: 100%; /* Genişliği garantile */
+            width: 100%;
         }
 
         .section-header {
@@ -151,40 +151,26 @@
             margin-top: 5px;
         }
 
-        /* PORTFOLYO (BENTO STYLE) */
+        /* PORTFOLYO (YENİ MODERN TASARIM) */
         .galeri {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            grid-auto-rows: 250px;
+            grid-auto-rows: 300px;
             gap: 20px;
         }
 
         .proje-kutu {
             position: relative;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
-            background: #eee;
+            background: #f4f4f4;
+            transition: var(--transition);
         }
 
-        .proje-kutu:nth-child(1) {
-            grid-column: span 4;
-            grid-row: span 2;
-        }
-
-        .proje-kutu:nth-child(2) {
-            grid-column: span 2;
-            grid-row: span 1;
-        }
-
-        .proje-kutu:nth-child(3) {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-
-        .proje-kutu:nth-child(4) {
-            grid-column: span 4;
-            grid-row: span 1;
-        }
+        .proje-kutu:nth-child(1) { grid-column: span 4; grid-row: span 2; }
+        .proje-kutu:nth-child(2) { grid-column: span 2; grid-row: span 1; }
+        .proje-kutu:nth-child(3) { grid-column: span 2; grid-row: span 2; }
+        .proje-kutu:nth-child(4) { grid-column: span 4; grid-row: span 1; }
 
         .proje-kutu img {
             width: 100%;
@@ -193,24 +179,34 @@
             transition: var(--transition);
         }
 
+        /* Yeni Overlay Tasarımı */
         .proje-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            align-items: flex-end;
             padding: 30px;
             opacity: 0;
+            transform: translateY(20px);
             transition: var(--transition);
         }
 
+        .proje-overlay h3 {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Bilgisayarda Hover Efekti */
         .proje-kutu:hover .proje-overlay {
             opacity: 1;
+            transform: translateY(0);
         }
 
         .proje-kutu:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         /* HİZMETLER SECTION */
@@ -240,27 +236,13 @@
             transform: translateY(-5px);
         }
 
-        .hizmet-kart .sayi {
-            font-size: 24px;
-            font-weight: 800;
-            color: #ccc;
-            min-width: 40px;
-        }
-
-        .hizmet-kart h3 {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
         /* İLETİŞİM SECTION */
         #iletisim {
             background: var(--primary);
             color: white;
             border-radius: 40px 40px 0 0;
             text-align: center;
-            width: 100%; /* Taşmayı önlemek için genişliği sabitle */
-            max-width: 100%;
+            padding: 100px 5%;
         }
 
         .contact-links {
@@ -282,50 +264,58 @@
             transition: 0.3s;
         }
 
-        .contact-item:hover {
-            opacity: 1;
-        }
-
-        /* MOBİL DÜZELTME MERKEZİ */
+        /* MOBİL UYUMLULUK DÜZELTMELERİ */
         @media (max-width: 992px) {
+            section {
+                padding: 80px 6%;
+            }
+
             #hakkimda {
                 grid-template-columns: 1fr;
             }
 
             .galeri {
                 grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: 200px;
+                grid-auto-rows: auto; /* Mobilde yükseklik görsele göre olsun */
+                gap: 15px;
             }
 
             .proje-kutu:nth-child(n) {
                 grid-column: span 2;
-                grid-row: span 1;
+                display: flex;
+                flex-direction: column; /* Görsel ve yazıyı alt alta getir */
+                background: none;
+                overflow: visible;
             }
 
-            /* Mobilde sağ/sol boşluğu eşitlemek için */
-            section {
-                padding: 80px 6%; 
+            .proje-kutu img {
+                border-radius: 20px;
+                height: 250px; /* Sabit yükseklik */
             }
-            
-            /* İletişim alanının taşmasını engelle */
+
+            /* Mobilde Overlay'i Başlığa Dönüştür */
+            .proje-overlay {
+                position: relative; /* Görselin altından çıksın */
+                opacity: 1;
+                transform: none;
+                background: none;
+                padding: 15px 5px;
+                color: var(--text-main);
+            }
+
+            .proje-overlay h3 {
+                color: var(--text-main);
+                font-size: 18px;
+            }
+
             #iletisim {
-                padding-left: 6%;
-                padding-right: 6%;
+                padding: 80px 6%;
             }
         }
 
         @media (max-width: 480px) {
-            nav {
-                width: 90%;
-                gap: 15px;
-                padding: 10px 20px;
-            }
-            nav a {
-                font-size: 11px;
-            }
-            .hakkimda-content h1 {
-                font-size: 32px;
-            }
+            nav { width: 92%; padding: 10px 15px; gap: 15px; }
+            nav a { font-size: 10px; }
         }
     </style>
 </head>
@@ -347,28 +337,12 @@
             <h1>Fikirleri Görsel <br>Deneyimlere Dönüştürüyorum.</h1>
             <p>
                 Ben Osman Zengin; Ondokuz Mayıs Üniversitesi'nde akademik eğitimimi sürdürürken, 5 yılı aşkın süredir
-                freelance ekosisteminde markalara dijital kimlik kazandırıyorum. Tasarımı sadece bir "görselleştirme"
-                aracı değil, bir problem çözme yöntemi olarak görüyorum.
+                freelance ekosisteminde markalara dijital kimlik kazandırıyorum.
             </p>
-            <p>
-                Trabzon'daki stüdyomda; minimalizmi fonksiyonellikle harmanlayarak modern, zamansız ve kullanıcı odaklı
-                çözümler üretiyorum. Logo tasarımından kurumsal kimliğe, web arayüzlerinden 3D modellemeye kadar geniş
-                bir yelpazede, markanızın hikayesini en doğru estetik dille anlatmak için buradayım.
-            </p>
-
             <div class="stats-grid">
-                <div class="stat-item">
-                    <h4>5+</h4>
-                    <p>Yıllık Deneyim</p>
-                </div>
-                <div class="stat-item">
-                    <h4>1000+</h4>
-                    <p>Tamamlanan Proje</p>
-                </div>
-                <div class="stat-item">
-                    <h4>%100</h4>
-                    <p>Tutku</p>
-                </div>
+                <div class="stat-item"><h4>5+</h4><p>Yıllık Deneyim</p></div>
+                <div class="stat-item"><h4>1000+</h4><p>Proje</p></div>
+                <div class="stat-item"><h4>%100</h4><p>Tutku</p></div>
             </div>
         </div>
     </section>
@@ -410,50 +384,21 @@
             <h2>Ne Yapıyorum?</h2>
         </div>
         <div class="hizmetler-grid">
-            <a href="logo-tasarimi.html" target="_blank" class="hizmet-kart">
-                <span class="sayi">01</span>
-                <h3>Logo Tasarımı</h3>
-            </a>
-            <a href="kartvizit-tasarimi.html" target="_blank" class="hizmet-kart">
-                <span class="sayi">02</span>
-                <h3>Kartvizit Tasarımı</h3>
-            </a>
-            <a href="sosyal-medya.html" target="_blank" class="hizmet-kart">
-                <span class="sayi">03</span>
-                <h3>Sosyal Medya Tasarımları</h3>
-            </a>
-            <a href="kurumsal-kimlik.html" target="_blank" class="hizmet-kart">
-                <span class="sayi">04</span>
-                <h3>Kurumsal Kimlik Tasarımları</h3>
-            </a>
-            <a href="brosur-tasarimi.html" target="_blank" class="hizmet-kart">
-                <span class="sayi">05</span>
-                <h3>Broşür Tasarımları</h3>
-            </a>
-            <a href="diger-tasarimlar.html" target="_blank" class="hizmet-kart">
-                <span class="sayi">06</span>
-                <h3>Diğer Tasarımlar</h3>
-            </a>
+            <a href="logo-tasarimi.html" class="hizmet-kart"><h3>Logo Tasarımı</h3></a>
+            <a href="sosyal-medya.html" class="hizmet-kart"><h3>Sosyal Medya</h3></a>
+            <a href="kurumsal-kimlik.html" class="hizmet-kart"><h3>Kurumsal Kimlik</h3></a>
         </div>
     </section>
 
     <section id="iletisim">
-        <h2 style="font-size: 50px; margin-bottom: 20px;">Bir Projen mi Var?</h2>
-        <p style="opacity: 0.7; font-size: 20px;">Hadi birlikte harika bir şeyler inşa edelim.</p>
-
+        <h2>Bir Projen mi Var?</h2>
         <div class="contact-links">
-            <a href="mailto:zendesign.psd@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i>
-                E-posta</a>
-            <a href="https://instagram.com/zendesign.psd" class="contact-item"><i class="fa-brands fa-instagram"></i>
-                Instagram</a>
-            <a href="https://www.behance.net/osmanzengin1?tracking_source=typeahead_search_direct&isProfilePanel=true"
-                class="contact-item"><i class="fa-brands fa-behance"></i> Behance</a>
+            <a href="mailto:zendesign.psd@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i> E-posta</a>
+            <a href="https://instagram.com/zendesign.psd" class="contact-item"><i class="fa-brands fa-instagram"></i> Instagram</a>
             <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Trabzon, TR</span>
         </div>
-
-        <p style="margin-top: 100px; font-size: 12px; opacity: 0.3;">&copy; 2026 Osman Zengin. Tüm hakları saklıdır.</p>
+        <p style="margin-top: 80px; font-size: 12px; opacity: 0.3;">&copy; 2026 Osman Zengin.</p>
     </section>
 
 </body>
-
 </html>
