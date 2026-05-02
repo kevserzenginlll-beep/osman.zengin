@@ -198,6 +198,11 @@
             transition: var(--transition);
         }
 
+        .proje-overlay h3 {
+            color: white; /* İstenilen değişiklik: Portfolyo yazıları beyaz yapıldı */
+            margin: 0;
+        }
+
         .proje-kutu:hover .proje-overlay {
             opacity: 1;
         }
@@ -243,7 +248,7 @@
         .hizmet-kart h3 {
             font-size: 18px;
             font-weight: 600;
-            color: var(--text-main);
+            color: var(--text-main); /* Hizmetler yazıları eski rengine döndü */
         }
 
         /* İLETİŞİM SECTION */
@@ -298,8 +303,8 @@
 
             /* Mobilde dokunulduğunda yazının görünmesi ve konumu */
             .proje-overlay {
-                opacity: 0; /* Mobilde istersen başlangıçta 1 yaparak sürekli görünür kılabiliriz */
-                padding: 15px; /* Mobilde bir tık daha az boşluk ki yazı tam sığsın */
+                opacity: 0; 
+                padding: 15px; 
             }
 
             /* Mobilde üzerine gelme efekti bazen tıklamayla çalışır */
@@ -365,9 +370,9 @@
                 </div>
             </div>
             <div class="proje-kutu">
-                <img src="res/logo/3.png" alt="Proje">
+                <img src="res/kartvizit/001.png" alt="Proje">
                 <div class="proje-overlay">
-                    <h3>Logo Tasarımı</h3>
+                    <h3>Kartvizit Tasarımı</h3>
                 </div>
             </div>
             <div class="proje-kutu">
