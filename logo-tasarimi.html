@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Tasarımı | Osman Zengin</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #121212;
+            --accent: #f3f3f3;
+            --text-main: #1a1a1a;
+            --text-sub: #666666;
+            --bg-body: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* MODERN NAV - Ana Sayfa ile Aynı */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 12px 30px;
+            border-radius: 100px;
+            z-index: 1000;
+            display: flex;
+            gap: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover {
+            color: #888;
+        }
+
+        /* Sayfa Başlığı */
+        .page-header {
+            text-align: center;
+            margin-top: 140px;
+            margin-bottom: 60px;
+            padding: 0 5%;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-sub);
+            font-size: 18px;
+        }
+
+        /* GRID YAPISI */
+        .portfolio-icerik {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 5% 100px 5%;
+        }
+
+        .grid-container {
+            display: grid;
+            gap: 30px;
+        }
+
+        /* Ana Sayfa Uyumlu Proje Kutuları */
+        .proje-kutu {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #f9f9f9;
+            /* Sen resim ekleyene kadar görünecek renk */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        /* Sen resim ekleyene kadar görünecek geçici ikon tasarımı */
+        .proje-kutu i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            transition: var(--transition);
+        }
+
+        .proje-kutu span {
+            font-weight: 600;
+            font-size: 16px;
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .proje-kutu:hover {
+            background: #f0f0f0;
+            box-shadow: var(--card-shadow);
+            transform: translateY(-5px);
+        }
+
+        .proje-kutu:hover i,
+        .proje-kutu:hover span {
+            color: #888;
+        }
+
+        /* Kendi Görsellerini Eklediğinde Devreye Girecek Kodlar */
+        .proje-kutu img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .proje-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: var(--transition);
+            color: white;
+        }
+
+        .proje-overlay h3 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .proje-overlay p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .proje-kutu:hover .proje-overlay {
+            opacity: 1;
+        }
+
+        .proje-kutu:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- SAYFALARA ÖZEL BOYUTLANDIRMALAR --- */
+
+        /* LOGO: Kare ve Büyük (min 280px genişlik) */
+        .grid-logo {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        .grid-logo .proje-kutu {
+            aspect-ratio: 1 / 1;
+        }
+
+        /* KARTVİZİT: Dikdörtgen (4 alan) */
+        .grid-kartvizit {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-kartvizit .proje-kutu {
+            aspect-ratio: 16 / 10;
+        }
+
+        /* SOSYAL MEDYA: Kare (3 alan) */
+        .grid-sosyal {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-sosyal .proje-kutu {
+            aspect-ratio: 1 / 1;
+        }
+
+        /* KURUMSAL KİMLİK: Geniş Dikdörtgen (2 alan) */
+        .grid-kurumsal {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-kurumsal .proje-kutu {
+            aspect-ratio: 16 / 9;
+        }
+
+        /* BROŞÜR: Dikey Dikdörtgen (A4 Oranı) */
+        .grid-brosur {
+            grid-template-columns: 1fr;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .grid-brosur .proje-kutu {
+            aspect-ratio: 1 / 1.414;
+        }
+
+        /* DİĞER: Yatay Dikdörtgen (5 alan) */
+        .grid-diger {
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        }
+
+        .grid-diger .proje-kutu {
+            aspect-ratio: 4 / 3;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+
+            .grid-kartvizit,
+            .grid-sosyal,
+            .grid-kurumsal,
+            .grid-diger {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Geri Dön</a>
+
+    </nav>
+
+    <div class="page-header">
+        <h1>Logo Tasarımı</h1>
+        <p>Markaların karakterini yansıtan minimal ve güçlü çizgiler.</p>
+    </div>
+
+    <section class="portfolio-icerik">
+        <div class="grid-container grid-logo">
+
+            <div class="proje-kutu">
+                <img src="res/logo/1.png" alt="">
+
+            </div>
+
+            <div class="proje-kutu">
+                <img src="res/logo/2.png" alt="">
+            </div>
+
+            <div class="proje-kutu">
+                <img src="res/logo/3.png" alt="">
+
+            </div>
+
+            <div class="proje-kutu">
+                <img src="res/logo/4.png" alt="">
+
+            </div>
+
+            <div class="proje-kutu">
+                <img src="res/logo/5.png" alt="">
+
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/6.png" alt="">
+
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/7.png" alt="">
+
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/8.png" alt="">
+
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/21.png" alt="">
+
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/10.png" alt="">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/22.png" alt="">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/12.png" alt="Logo 12">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/13.png" alt="Logo 13">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/14.png" alt="Logo 14">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/15.png" alt="Logo 15">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/16.png" alt="Logo 16">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/17.png" alt="Logo 17">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/18.png" alt="Logo 18">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/19.png" alt="">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/20.png" alt="">
+            </div>
+            <div class="proje-kutu">
+                <img src="res/logo/1.23.png" alt="res1.23">
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+</html>
