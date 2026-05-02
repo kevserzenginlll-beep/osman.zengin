@@ -276,9 +276,11 @@
             opacity: 1;
         }
 
+        /* RESPONSIVE DÜZENLEMELERİ */
         @media (max-width: 992px) {
             #hakkimda {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
 
             .galeri {
@@ -289,6 +291,41 @@
             .proje-kutu:nth-child(n) {
                 grid-column: span 2;
                 grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* 1. Mobilde yazıların üzerine binme ve okunmama sorununu çözer */
+            .proje-overlay {
+                opacity: 1; /* Yazıların hep görünür olmasını sağlar */
+                background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)); /* Alt kısmı karartarak yazıyı belirginleştirir */
+                padding: 15px;
+            }
+
+            .proje-overlay h3 {
+                font-size: 16px;
+            }
+
+            /* 2. Sağ tarafta oluşan boşluk/taşma sorununu çözer */
+            body, html {
+                overflow-x: hidden;
+                width: 100%;
+                position: relative;
+            }
+
+            section {
+                padding: 80px 4%; /* Sağ ve sol boşluğu mobilde eşitler */
+            }
+
+            /* Navigasyonun mobilde ekran dışına taşmaması için */
+            nav {
+                width: 90%;
+                gap: 15px;
+                padding: 10px 15px;
+            }
+
+            nav a {
+                font-size: 12px;
             }
         }
     </style>
@@ -346,28 +383,24 @@
                 <img src="res/kurumsal/31.png" alt="Proje">
                 <div class="proje-overlay">
                     <h3>Kurumsal Tasarım</h3>
-                    
                 </div>
             </div>
             <div class="proje-kutu">
                 <img src="res/logo/3.png" alt="Proje">
                 <div class="proje-overlay">
                     <h3>Logo Tasarımı</h3>
-                    
                 </div>
             </div>
             <div class="proje-kutu">
                 <img src="res/logo/16.png" alt="Proje">
                 <div class="proje-overlay">
                     <h3>Logo Tasarımı</h3>
-                    
                 </div>
             </div>
             <div class="proje-kutu">
                 <img src="res/diger/37.png" alt="Proje">
                 <div class="proje-overlay">
                     <h3>Ambalaj Tasarımı</h3>
-                    
                 </div>
             </div>
         </div>
