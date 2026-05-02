@@ -19,6 +19,7 @@
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        /* TEMEL AYARLAR */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -30,7 +31,7 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden; /* Yatay kaymayı engeller */
+            overflow-x: hidden;
         }
 
         nav {
@@ -61,9 +62,7 @@
             gap: 8px;
         }
 
-        nav a:hover {
-            color: #888;
-        }
+        nav a:hover { color: #888; }
 
         .page-header {
             text-align: center;
@@ -80,10 +79,7 @@
             margin-bottom: 15px;
         }
 
-        .page-header p {
-            color: var(--text-sub);
-            font-size: 18px;
-        }
+        .page-header p { color: var(--text-sub); font-size: 18px; }
 
         .portfolio-icerik {
             max-width: 1000px;
@@ -95,27 +91,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 80px;
+            gap: 60px; /* Görseller arası mesafe */
         }
 
+        /* RESMİN ŞEKLİNİ ALAN KUTU YAPISI */
         .proje-kutu {
             position: relative;
             width: 100%;
             max-width: 900px;
-            /* Bilgisayarda senin istediğin oran */
-            aspect-ratio: 16 / 10; 
             border-radius: 24px;
             overflow: hidden;
             background: #f9f9f9;
             transition: var(--transition);
+            /* Aspect-ratio silindi: Kutu artık resmin yüksekliğine göre şekil alacak */
         }
 
         .proje-kutu img {
+            display: block; /* Altındaki boşluğu siler */
             width: 100%;
-            height: 100%;
-            /* Resmin kutuya tam sığması ve kesilmemesi için 'contain' daha güvenlidir 
-               ama tasarımına göre 'cover' bıraktım, mobilde oranını düzelttim */
-            object-fit: cover; 
+            height: auto; /* Resmin kendi orijinal oranını korur */
+            object-fit: contain; /* Resmin kesilmesini kesinlikle engeller */
             transition: var(--transition);
         }
 
@@ -124,36 +119,15 @@
             transform: translateY(-8px);
         }
 
-        .proje-kutu:hover img {
-            transform: scale(1.03);
-        }
-
         /* MOBİL DÜZELTME */
         @media (max-width: 768px) {
-            .page-header {
-                margin-top: 100px;
-            }
-            .page-header h1 {
-                font-size: 32px;
-            }
-            .grid-container {
-                gap: 40px;
-            }
-            .proje-kutu {
-                /* Mobilde kare (1/1) yerine 4/5 veya 3/4 kullanmak sosyal medya 
-                   postları için daha uygundur ve resim daha iyi sığar */
-                aspect-ratio: 4 / 5; 
-                border-radius: 16px;
-            }
+            .page-header { margin-top: 100px; }
+            .page-header h1 { font-size: 32px; }
+            .grid-container { gap: 30px; }
             
-            /* Mobilde o yanlardaki boşlukları (left:30px vs) sildim çünkü 
-               resmin kutuya tam oturması ve taşmaması gerekiyor */
-            .proje-kutu img {
-                position: relative;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover; /* Resmin kutuyu tam doldurmasını sağlar */
+            .proje-kutu {
+                border-radius: 16px;
+                /* Mobilde de genişlik %100, yükseklik resim neyse o olacak */
             }
         }
     </style>
