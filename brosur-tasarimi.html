@@ -1,75 +1,202 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Broşür Tasarımı | Osman Zengin</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
 
     <style>
-        :root { --primary: #121212; --text-main: #1a1a1a; --text-sub: #666666; --bg-body: #ffffff; --card-shadow: 0 10px 30px rgba(0,0,0,0.05); --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: "Plus Jakarta Sans", sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; }
+        :root {
+            --primary: #121212;
+            --text-main: #1a1a1a;
+            --text-sub: #666666;
+            --bg-body: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
 
-        nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); padding: 12px 30px; border-radius: 100px; z-index: 1000; display: flex; gap: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); }
-        nav a { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 600; text-transform: uppercase; transition: var(--transition); display: flex; align-items: center; gap: 8px;}
-        nav a:hover { color: #888; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        .page-header { text-align: center; margin-top: 140px; margin-bottom: 60px; padding: 0 5%; }
-        .page-header h1 { font-size: 48px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 15px; }
-        .page-header p { color: var(--text-sub); font-size: 18px; }
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-        .portfolio-icerik { max-width: 1400px; margin: 0 auto; padding: 0 2% 100px 2%; }
-        .grid-container { display: grid; gap: 30px; }
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 12px 30px;
+            border-radius: 100px;
+            z-index: 1000;
+            display: flex;
+            gap: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
 
-        .proje-kutu { position: relative; border-radius: 24px; overflow: hidden; background: #f9f9f9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ccc; transition: var(--transition); }
-        .proje-kutu i { font-size: 50px; margin-bottom: 15px; color: #e0e0e0; transition: var(--transition); }
-        .proje-kutu span { font-weight: 600; font-size: 16px; color: #aaa; transition: var(--transition); }
-        .proje-kutu:hover { background: #f0f0f0; box-shadow: var(--card-shadow); transform: translateY(-5px); }
-        .proje-kutu:hover i, .proje-kutu:hover span { color: #888; }
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        .proje-kutu img { 
-            position: absolute; 
+        nav a:hover {
+            color: #888;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-top: 140px;
+            margin-bottom: 60px;
+            padding: 0 5%;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-sub);
+            font-size: 18px;
+        }
+
+        .portfolio-icerik {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2% 100px 2%;
+        }
+
+        .grid-container {
+            display: grid;
+            gap: 30px;
+        }
+
+        .proje-kutu {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .proje-kutu i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            transition: var(--transition);
+        }
+
+        .proje-kutu span {
+            font-weight: 600;
+            font-size: 16px;
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .proje-kutu:hover {
+            background: #f0f0f0;
+            box-shadow: var(--card-shadow);
+            transform: translateY(-5px);
+        }
+
+        .proje-kutu:hover i,
+        .proje-kutu:hover span {
+            color: #888;
+        }
+
+        .proje-kutu img {
+            position: absolute;
             top: 0;
             bottom: 0;
-            left: 30px; 
-            width: calc(100% - 60px); 
-            height: 100%; 
-            object-fit: cover; 
-            z-index: 1; 
-            transition: var(--transition); 
+            left: 30px;
+            width: calc(100% - 60px);
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: var(--transition);
         }
-        
-        /* OVERLAY GÜNCELLENDİ (Gradient yapıldı, h3 kaldırıldı) */
-        .proje-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%); z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: var(--transition); color: white; }
-        .proje-overlay p { font-size: 14px; opacity: 0.9; }
-        
-        .proje-kutu:hover .proje-overlay { opacity: 1; }
-        .proje-kutu:hover img { transform: scale(1.05); }
 
-        .grid-brosur { 
-            grid-template-columns: 1fr; 
+        /* OVERLAY GÜNCELLENDİ (Gradient yapıldı, h3 kaldırıldı) */
+        .proje-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 95%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: var(--transition);
+            color: white;
+        }
+
+        .proje-overlay p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .proje-kutu:hover .proje-overlay {
+            opacity: 1;
+        }
+
+        .proje-kutu:hover img {
+            transform: scale(1.05);
+        }
+
+        .grid-brosur {
+            grid-template-columns: 1fr;
             width: 100%;
-            margin: 0 auto; 
+            margin: 0 auto;
             display: flex;
             justify-content: center;
         }
 
-        .grid-brosur .proje-kutu { 
-            width: 95%; 
-            max-width: 1200px; 
-            aspect-ratio: 16 / 8; 
+        .grid-brosur .proje-kutu {
+            width: 95%;
+            max-width: 1200px;
+            aspect-ratio: 16 / 8;
         }
 
-        @media (max-width: 768px) { 
-            .page-header h1 { font-size: 36px; } 
-            .grid-brosur .proje-kutu { 
-                width: 100%; 
-                aspect-ratio: 4 / 3; 
-            } 
-            
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .grid-brosur .proje-kutu {
+                width: 100%;
+                aspect-ratio: 4 / 3;
+            }
+
             .proje-kutu img {
                 left: 15px;
                 width: calc(100% - 30px);
@@ -77,6 +204,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -92,10 +220,16 @@
         <div class="grid-container grid-brosur">
             <div class="proje-kutu">
                 <img src="res/brosur/32.png" alt="">
-                <div class="proje-overlay"><p>1</p></div>
+                <div class="proje-overlay">
+                    <p>"Git-Git Chicken markası için tasarlanan çift taraflı paket servis broşürü. Ön
+                        yüzde markanın dinamik kırmızı tonlarıyla ana ürünleri öne çıkaran hareketli bir kompozisyon;
+                        arka yüzde ise müşteri sipariş sürecini kolaylaştıracak net, anlaşılır ve ikonlarla desteklenmiş
+                        bir menü düzeni (grid sistemi) oluşturuldu.</p>
+                </div>
             </div>
         </div>
     </section>
 
 </body>
+
 </html>
