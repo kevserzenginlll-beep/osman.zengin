@@ -49,9 +49,11 @@
             width: calc(100% - 60px);
         }
 
-        .proje-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: var(--transition); color: white; }
-        .proje-overlay h3 { font-size: 24px; font-weight: 700; }
-        .proje-overlay p { font-size: 14px; opacity: 0.8; }
+        /* OVERLAY GÜNCELLEMESİ: Görselin renklerini bozmamak için sadece alt kısımdan yukarı doğru kararan bir gradient eklendi */
+        .proje-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%); z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: var(--transition); color: white; }
+        
+        .proje-overlay p { font-size: 14px; opacity: 0.9; }
+        
         .proje-kutu:hover .proje-overlay { opacity: 1; }
         .proje-kutu:hover img { transform: scale(1.05); }
 
@@ -84,11 +86,47 @@
 
     <section class="portfolio-icerik">
         <div class="grid-container grid-diger">
-            <div class="proje-kutu"><img src="res/diger/33.png" alt=""></div>
-            <div class="proje-kutu"><img src="res/diger/34.png" alt=""></div>
-            <div class="proje-kutu"><img src="res/diger/38.png" alt=""></div>
-            <div class="proje-kutu"><img src="res/diger/36.png" alt=""></div>
-            <div class="proje-kutu"><img src="res/diger/37.png" alt=""></div>
+            
+            <div class="proje-kutu">
+                <img src="res/diger/33.png" alt="Kral Şakir">
+                <div class="proje-overlay">
+                    
+                    <p>Arınma markası için kurumsal bilgilendirme kataloğu. Koyu tema ile profesyonel bir çizgi hedeflendi.</p>
+                </div>
+            </div>
+            
+            <div class="proje-kutu">
+                <img src="res/diger/34.png" alt="Pawworld">
+                <div class="proje-overlay">
+                    
+                    <p>Öykü kitabı kapak tasarımı. Hikayenin kırsal ve nostaljik atmosferi, sade tipografi ile desteklendi..</p>
+                </div>
+            </div>
+            
+            <div class="proje-kutu">
+                <img src="res/diger/38.png" alt="Cemile Kitap Kapağı">
+                <div class="proje-overlay">
+                    
+                    <p>Doğal (freeze-dry) meyve atıştırmalığı ambalajı. Canlı görsellerle organik bir his yaratıldı.</p>
+                </div>
+            </div>
+            
+            <div class="proje-kutu">
+                <img src="res/diger/36.png" alt="Anka Berry">
+                <div class="proje-overlay">
+                    
+                    <p>Çocuklara yönelik, dinamik ve renkli ürün etiketi konsept tasarımı.</p>
+                </div>
+            </div>
+            
+            <div class="proje-kutu">
+                <img src="res/diger/37.png" alt="Arinna Miracle Health">
+                <div class="proje-overlay">
+                    
+                    <p>Kedi ve köpek atıştırmalığı ambalaj tasarımı. Bilgi hiyerarşisi ve net okunabilirlik ön planda tutuldu.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 

@@ -30,26 +30,25 @@
         .proje-kutu:hover { background: #f0f0f0; box-shadow: var(--card-shadow); transform: translateY(-5px); }
         .proje-kutu:hover i, .proje-kutu:hover span { color: #888; }
 
-        /* RESİM KISMINDAKİ BOŞLUK DEĞİŞİKLİKLERİ BURADA */
         .proje-kutu img { 
             position: absolute; 
             top: 0;
             bottom: 0;
-            left: 30px; /* Soldan bırakılan boşluk */
-            width: calc(100% - 60px); /* Sağdan ve soldan boşluk kalması için genişlik hesabı */
+            left: 30px; 
+            width: calc(100% - 60px); 
             height: 100%; 
             object-fit: cover; 
             z-index: 1; 
             transition: var(--transition); 
         }
         
-        .proje-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: var(--transition); color: white; }
-        .proje-overlay h3 { font-size: 24px; font-weight: 700; }
-        .proje-overlay p { font-size: 14px; opacity: 0.8; }
+        /* OVERLAY GÜNCELLENDİ (Gradient yapıldı, h3 kaldırıldı) */
+        .proje-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%); z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: var(--transition); color: white; }
+        .proje-overlay p { font-size: 14px; opacity: 0.9; }
+        
         .proje-kutu:hover .proje-overlay { opacity: 1; }
         .proje-kutu:hover img { transform: scale(1.05); }
 
-        /* KUTUYU MAKSİMUM BOYUTA ÇEKTİĞİMİZ ALAN */
         .grid-brosur { 
             grid-template-columns: 1fr; 
             width: 100%;
@@ -59,19 +58,18 @@
         }
 
         .grid-brosur .proje-kutu { 
-            width: 95%; /* Sayfanın neredeyse tamamını kaplar */
-            max-width: 1200px; /* Çok geniş ekranlarda aşırı dağılmaması için devasa bir üst sınır */
-            aspect-ratio: 16 / 8; /* Daha dolgun bir dikdörtgen yapısı */
+            width: 95%; 
+            max-width: 1200px; 
+            aspect-ratio: 16 / 8; 
         }
 
         @media (max-width: 768px) { 
             .page-header h1 { font-size: 36px; } 
             .grid-brosur .proje-kutu { 
                 width: 100%; 
-                aspect-ratio: 4 / 3; /* Mobilde resmin detayları kaybolmasın diye biraz daha yüksek yapıldı */
+                aspect-ratio: 4 / 3; 
             } 
             
-            /* MOBİL UYUMLULUK İÇİN BOŞLUK AYARI */
             .proje-kutu img {
                 left: 15px;
                 width: calc(100% - 30px);
@@ -92,7 +90,10 @@
 
     <section class="portfolio-icerik">
         <div class="grid-container grid-brosur">
-            <div class="proje-kutu"><img src="res/brosur/32.png" alt=""></div>
+            <div class="proje-kutu">
+                <img src="res/brosur/32.png" alt="">
+                <div class="proje-overlay"><p>1</p></div>
+            </div>
         </div>
     </section>
 

@@ -137,23 +137,23 @@
             color: #888;
         }
 
-        /* RESİM BOŞLUKLARINI AYARLADIĞIMIZ KISIM BURASI */
         .proje-kutu img {
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 30px; /* Soldan bırakılan boşluk */
-            width: calc(100% - 60px); /* Sağdan ve soldan toplam boşluğu çıkartarak resim genişliğini ayarladık */
+            left: 30px;
+            width: calc(100% - 60px);
             height: 100%;
             object-fit: cover;
             z-index: 1;
             transition: var(--transition);
         }
 
+        /* OVERLAY GÜNCELLENDİ (Gradient yapıldı, h3 kaldırıldı) */
         .proje-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 60%);
             z-index: 2;
             display: flex;
             flex-direction: column;
@@ -164,14 +164,9 @@
             color: white;
         }
 
-        .proje-overlay h3 {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
         .proje-overlay p {
             font-size: 14px;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         .proje-kutu:hover .proje-overlay {
@@ -204,10 +199,9 @@
             .page-header h1 {
                 font-size: 36px;
             }
-            
-            /* Mobilde boşlukların çok abartı durmaması için biraz azaltabiliriz (İsteğe Bağlı) */
+
             .proje-kutu img {
-                left: 15px; 
+                left: 15px;
                 width: calc(100% - 30px);
             }
         }
@@ -227,10 +221,34 @@
 
     <section class="portfolio-icerik">
         <div class="grid-container grid-kartvizit">
-            <div class="proje-kutu"><img src="res/kartvizit/23.png" alt=""></div>
-            <div class="proje-kutu"><img src="res/kartvizit/24.png" alt=""></div>
-            <div class="proje-kutu"><img src="res/kartvizit/25.png" alt=""></div>
-            <div class="proje-kutu"><img src="res/kartvizit/26.png" alt=""></div>
+            <div class="proje-kutu">
+                <img src="res/kartvizit/23.png" alt="">
+                <div class="proje-overlay">
+                    <p>İnşaat firması için tasarlanan kurumsal kartvizit konsepti. Koyu zemin üzerinde bej tonları ve
+                        geometrik logo kullanılarak premium bir duruş sergilendi.</p>
+                </div>
+            </div>
+            <div class="proje-kutu">
+                <img src="res/kartvizit/24.png" alt="">
+                <div class="proje-overlay">
+                    <p>Lüks araç galerisi için hazırladığım kartvizit konsepti. Siyah ve kırmızı tonlarla dinamik,
+                        prestijli ve güven veren bir görünüm hedeflendi.</p>
+                </div>
+            </div>
+            <div class="proje-kutu">
+                <img src="res/kartvizit/25.png" alt="">
+                <div class="proje-overlay">
+                    <p>Fast-food markası için tasarladığım enerjik kartvizit çalışması. Canlı ve sıcak renk paleti
+                        kullanılarak markanın dinamik, samimi ve hızlı yapısı ön plana çıkarıldı.</p>
+                </div>
+            </div>
+            <div class="proje-kutu">
+                <img src="res/kartvizit/26.png" alt="">
+                <div class="proje-overlay">
+                    <p>Kendi freelance markam için oluşturduğum minimalist kartvizit tasarımı. Siyah-beyaz zıtlığı ve QR
+                        kod entegrasyonu ile modern ve sade bir kimlik yaratıldı.</p>
+                </div>
+            </div>
         </div>
     </section>
 
